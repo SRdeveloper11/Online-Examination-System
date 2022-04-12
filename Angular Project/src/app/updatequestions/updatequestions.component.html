@@ -1,0 +1,94 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+            <span><h1 style="text-align: center;padding-top: 20px;"> UPDATE QUESTION</h1></span>
+			<form class="login">
+                <div class="login__field">
+                    
+					
+					<label>QuestionId:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input type="text" class="login__input" >
+				</div>
+				<div class="login__field">
+					
+					<label>Subject Name:</label>
+					<input type="text" class="login__input">
+				</div>
+				<div class="login__field">
+					
+					<label>Question:&nbsp;</label>
+					<input type="text" class="login__input1" >
+				</div>
+				<div class="login__field">
+					
+					<label>Answer:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+                <div class="login__field">
+					
+					<label>Author:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+				
+			</form>
+			<form class="login">
+                <button routerLink="/home" routerLinkActive="active" class="button login__submit1" >
+                    <span class="button__text" >Load Record</span>
+                    
+                </button>	
+                <div class="login__field">
+                    
+					
+					<label>Option a:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+                <div class="login__field">
+                    
+					
+					<label>Option b:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+                <div class="login__field">
+                    
+					
+					<label>Option c:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+                <div class="login__field">
+                    
+					
+					<label>Option d:&nbsp;</label>
+					<input type="text" class="login__input1">
+				</div>
+				
+				
+			</form>
+            <button  routerLinkActive="active" class="button login__submit" (click)="openDialogWithRef(firstDialog)">
+                <span class="button__text" >Update</span>
+                
+            </button>
+			<div class="social-login">
+				<div class="social-icons">
+					
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+<ng-template #firstDialog>
+	<div >
+		<h2 matDialogTitle>Message</h2>
+	<p matDialogContent><em style="font-weight: 800;">Question Updated Successfully!!</em></p>
+	<mat-dialog-actions align="end">
+	  <button mat-button matDialogClose routerLink="/result" class="login__submit2" routerLink="/home">OK</button>
+	</mat-dialog-actions>
+	</div>
+	
+  </ng-template>

@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login">
+                <button routerLink="/adminlogin" routerLinkActive="active" class="button login__submit1">
+					<span  class="button__text">ADMIN LOGIN</span>
+					
+				</button>	
+				<button routerLink="/login" routerLinkActive="active" class="button login__submit">
+					<span  class="button__text">STUDENT LOGIN</span>
+					
+				</button>				
+			</form>
+			<div class="social-login">
+				<!-- <h3>log in via</h3> -->
+				<div class="social-icons">
+					
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+<button mat-button (click)="openDialogWithRef(firstDialog)">Open dialog with reference</button>
+<button mat-button (click)="openOtherDialog()">Open dialog in code</button>
+<ng-template #firstDialog>
+	<h2 matDialogTitle>Hello, world!</h2>
+	<p matDialogContent><em>Content for this dialog goes here...</em></p>
+	<mat-dialog-actions align="end">
+	  <button mat-button matDialogClose>Dismiss</button>
+	</mat-dialog-actions>
+  </ng-template>
+  
+  <ng-template #secondDialog>
+	<h2 matDialogTitle>Hello, second dialog!</h2>
+	<p matDialogContent>Interesting note: This template reference was referenced in code with the <code>@ViewChild</code>, which lets you query components/template references in the component view.</p>
+	<mat-dialog-actions align="end">
+	  <button mat-button matDialogClose>Dismiss</button>
+	</mat-dialog-actions>
