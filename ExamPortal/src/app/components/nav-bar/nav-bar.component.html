@@ -1,8 +1,7 @@
 <mat-toolbar color="primary">
-  {{loggedIn}}
-  <!-- <span><a mat-icon-button routerLink = "/">Exam Portal</a></span>
+  <span><a mat-icon-button routerLink = "/">Exam Portal</a></span>
   <span class="example-spacer"></span>
-  <a *ngIf="!loggedIn" mat-icon-button routerLink = "/rules-module">Rules</a>
+  <!-- <a *ngIf="!loggedIn" mat-icon-button routerLink = "/rules-module">Rules</a>
   <a *ngIf="!loggedIn" mat-icon-button routerLink = "/student-module">Student</a>
   <a *ngIf="!loggedIn" mat-icon-button routerLink = "/question-module">Question</a>
   <a *ngIf="!loggedIn" mat-icon-button routerLink = "/result">Result</a>
@@ -15,6 +14,3 @@
   <a *ngIf="loggedIn"  mat-icon-button routerLink = "/result">Result</a>
   <a *ngIf="loggedIn" (click)="logoutUser()" mat-icon-button>Logout</a>
 </mat-toolbar>
-
-
-
