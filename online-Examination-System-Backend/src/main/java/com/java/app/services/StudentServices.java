@@ -3,9 +3,10 @@ package com.java.app.services;
 import com.java.app.model.Student;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import com.java.app.model.Student;
 import com.java.app.db.StudentRepository;
 
 import java.util.List;
@@ -61,4 +62,34 @@ public class StudentServices {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+    
+    public ResponseEntity<?> loginStudent(@RequestBody Student student) {
+		Student existingUser = (Student) studentRepository.getStudentByUsername(student.getUsername());
+		System.out.println(student);
+		if(existingUser == null) {
+			System.out.println("Student Not Found");
+			return (ResponseEntity<?>) ResponseEntity.notFound();
+		}else if(existingUser.getPassword().equals(student.getPassword()))
+		{
+			return ResponseEntity.ok(student);
+		}
+		else {
+			return (ResponseEntity<?>) ResponseEntity.badRequest();
+		}
+	}
+    
+    public Student updateStudents(@RequestBody Student student) {
+		Student existingStudent = (Student) studentRepository.getStudentByUsername(student.getUsername());
+		System.out.println(student);
+		if(existingStudent == null) {
+			System.out.println("Student Not Found");
+			//return userRepository.save(user);
+		}else {
+			//existingUser.setUsername(user.getUsername());
+			existingStudent.setPassword(student.getPassword());
+			studentRepository.save(existingStudent);
+		}
+		return student;
+		
+	}
 }
