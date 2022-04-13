@@ -1,5 +1,5 @@
 # Online-Examination-System
-An online examination system using Angular,SQL and SpringBoot Webservices.The system has two users-admin and student wherein an admin has whole CRUD Functionality and student can log in to the exam portal to give exam
+An online examination system using Angular,MySQL and SpringBoot Webservices.The system has two users-admin and student wherein an admin has whole CRUD Functionality and student can log in to the exam portal to give exam
 
 # Admin Section
 Admin can-
