@@ -19,11 +19,12 @@ export class TestPageComponent implements OnInit {
   displayanswer: any;
   allotedtime: any;
   time: any = 60;
+  objectKeys = Object.keys;
   public mySentences: Array<any> = [
-    { id: 1, text: 'what is AngularTutorial?', review: -1, answers: { 'a': 'answer a', 'b': 'answer a', 'c': 'answer a', 'd': 'answer a' } },
-    { id: 2, text: 'What is javaspring?', review: -1, answers: { 'a': 'answer b', 'b': 'answer b', 'c': 'answer b', 'd': 'answer b' } },
-    { id: 3, text: 'What is web api?', review: -1, answers: { 'a': 'answer c', 'b': 'answer c', 'c': 'answer c', 'd': 'answer c' } },
-    { id: 4, text: 'What is async call?', review: -1, answers: { 'a': 'answer d', 'b': 'answer d', 'c': 'answer d', 'd': 'answer d' } },
+    { id: 1, text: 'what is AngularTutorial?', review: -1, answers: [{ id: 1, value: 'answer a',isselected:false},{ id: 2, value: 'answer a',isselected:false},{ id: 3, value: 'answer a',isselected:false},{ id: 4, value: 'answer a',isselected:false}] },
+    { id: 2, text: 'What is javaspring?', review: -1, answers: [{ id: 1, value: 'answer b',isselected:false},{ id: 2, value: 'answer b',isselected:false},{ id: 3, value: 'answer b',isselected:false},{ id: 4, value: 'answer b',isselected:false}] },
+    { id: 3, text: 'What is web api?', review: -1, answers: [{ id: 1, value: 'answer c',isselected:false},{ id: 2, value: 'answer c',isselected:false},{ id: 3, value: 'answer c',isselected:false},{ id: 4, value: 'answer c',isselected:false}] },
+    { id: 4, text: 'What is async call?', review: -1, answers: [{ id: 1, value: 'answer d',isselected:false},{ id: 2, value: 'answer d',isselected:false},{ id: 3, value: 'answer d',isselected:false},{ id: 4, value: 'answer d',isselected:false}] },
   ];
   constructor(private dialog: MatDialog) {
     // this.questionsmodel = TestQuestions;
@@ -82,6 +83,14 @@ export class TestPageComponent implements OnInit {
     if (event.action == 'done') {
       this.openDialogWithRef(ref);
     }
+  }
+  isAllSelected(item:any) {
+    this.displayanswer.forEach((val: { id: any; isselected: boolean; }) => {
+      if (val.id == item.id) val.isselected = !val.isselected;
+      else {
+        val.isselected = false;
+      }
+    });
   }
   ngOnDestroy() {
     //clearing interval

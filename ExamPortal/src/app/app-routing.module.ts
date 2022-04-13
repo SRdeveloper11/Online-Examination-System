@@ -96,7 +96,7 @@ const routes: Routes = [
       path : "test",
       component : TestPageComponent,
       pathMatch : 'full',
-      canActivate : [AuthGuard]
+    //   canActivate : [AuthGuard]
   }
 
 ];

@@ -1,6 +1,6 @@
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<div class="container">
+<div class="container1">
 	<div class="screen">
 		<div class="screen__content">
             <span style="text-align: center;display: inline;"><h1> TEST</h1></span>
@@ -11,13 +11,13 @@
                     <b style="font-weight: 600;font-size: large;">{{this.questionnumber}}) {{this.displayquestion}}</b>
 
 				</div>
-                <div class="login__field">
-                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.a}}
-                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.b}}
-                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.c}}
-                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.d}}
+				<div *ngFor="let k of displayanswer;let i = index" class="login__field">
+                    <input   type="checkbox"   [checked]="k.isselected"
+					(change)="isAllSelected(k)" name="answer" class="checkbox-round" style="display: inline-block;"/>{{k.value}}
+                   
 
 				</div>
+
 
 
 			</form>
