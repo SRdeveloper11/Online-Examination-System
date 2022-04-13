@@ -27,6 +27,7 @@ import { SetparameterComponent } from './setparameter/setparameter.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
 import { UpdatequestionsComponent } from './updatequestions/updatequestions.component';
 import { AdminresultComponent } from './adminresult/adminresult.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {path: 'home',component:HomeComponent},
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path:'set',component:SetparameterComponent},
   {path:'addquestion',component:AddquestionComponent},
   {path:'updatequestion',component:UpdatequestionsComponent},
-  {path:'adminresult',component:AdminresultComponent}
+  {path:'adminresult',component:AdminresultComponent},
+  { path: 'forgot', component: ForgotpasswordComponent }
   // { path: 'register', component: RegisterComponent }
 ];
 @NgModule({
