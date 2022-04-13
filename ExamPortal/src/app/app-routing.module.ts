@@ -48,7 +48,7 @@ const routes: Routes = [
       path : "admin-dashboard",
       component : AdminDashboardComponent,
       pathMatch : 'full',
-      canActivate : [AdminAuthGuard]
+    //   canActivate : [AdminAuthGuard]
   },
   {
       path : "admin-forgot",
@@ -71,7 +71,7 @@ const routes: Routes = [
       path : "rules-module",
       component : RulesModuleComponent,
       pathMatch : 'full',
-      canActivate : [AdminAuthGuard]
+    //   canActivate : [AdminAuthGuard]
   },
   {
       path : "result",
