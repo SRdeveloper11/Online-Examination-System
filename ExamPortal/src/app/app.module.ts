@@ -27,6 +27,9 @@ import { RulesModuleComponent } from './components/admin/components/admin-dashbo
 import { ResultComponent } from './components/admin/components/admin-dashboard/components/result/result.component';
 import { ExamDetailComponent } from './components/dashboard/components/exam-detail/exam-detail.component';
 import { TestPageComponent } from './components/dashboard/components/test-page/test-page.component';
+import { RulePageComponent } from './components/dashboard/components/rule-page/rule-page.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { TestPageComponent } from './components/dashboard/components/test-page/t
     RulesModuleComponent,
     ResultComponent,
     ExamDetailComponent,
-    TestPageComponent
+    TestPageComponent,
+    RulePageComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { TestPageComponent } from './components/dashboard/components/test-page/t
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

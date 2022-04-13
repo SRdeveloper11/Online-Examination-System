@@ -15,6 +15,7 @@ import { RulesModuleComponent } from './components/admin/components/admin-dashbo
 import { ResultComponent } from './components/admin/components/admin-dashboard/components/result/result.component';
 import { ExamDetailComponent } from './components/dashboard/components/exam-detail/exam-detail.component';
 import { TestPageComponent } from './components/dashboard/components/test-page/test-page.component';
+import { RulePageComponent } from './components/dashboard/components/rule-page/rule-page.component';
 
 const routes: Routes = [
 
@@ -82,6 +83,12 @@ const routes: Routes = [
   {
       path : "exam-detail",
       component : ExamDetailComponent,
+      pathMatch : 'full',
+      canActivate : [AuthGuard]
+  },
+  {
+      path : "rule-page",
+      component : RulePageComponent,
       pathMatch : 'full',
       canActivate : [AuthGuard]
   },

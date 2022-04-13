@@ -1,27 +1,89 @@
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <div class="container">
-    <div class="card text-center">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="true" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Online-Examination </h5>
-          <p class="card-text">How are You ?</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><button class="btn btn-primary-outline"> A item</button></li>
-            <li class="list-group-item"><button class="btn btn-primary-outline">A second item</button></li>
-            <li class="list-group-item"><button class="btn btn-primary-outline">A third item</button></li>
-            <li class="list-group-item"><button class="btn btn-primary-outline">A Fourth item</button></li>
-          </ul>
-          <a href="#" class="btn btn-primary-outline">Previous</a>&nbsp;&nbsp;
-          <a href="#" class="btn btn-primary">Q-No</a>&nbsp;&nbsp;
-          <a href="#" class="btn btn-primary-outline">Next</a>
-        </div>
-    </div>
+	<div class="screen">
+		<div class="screen__content">
+            <span style="text-align: center;display: inline;"><h1> TEST</h1></span>
+            <span style="float: right;display: inline;"><h1> Timer: <b><countdown [config]="{leftTime: allotedtime}" (event)="handleEvent($event,firstDialog)"></countdown></b></h1></span>
+			<form class="login">
+
+                <div class="login__field">
+                    <b style="font-weight: 600;font-size: large;">{{this.questionnumber}}) {{this.displayquestion}}</b>
+
+				</div>
+                <div class="login__field">
+                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.a}}
+                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.b}}
+                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.c}}
+                    <input type="checkbox" name="answer" class="checkbox-round" />{{this.displayanswer.d}}
+
+				</div>
+
+
+			</form>
+			<form class="login">
+                Question/Attempt Selection
+
+                <div class="photo">
+
+					<div      *ngFor="let j of mySentences;let i = index" (click)="openquestion(i)" class='circle' [class.in-row]="(mySentences[i].review==1 && mySentences[i].review!=-1)" [class.in-row1]="(mySentences[i].review==0 && mySentences[i].review!=-1)">
+						<!-- <span  [ngClass]="{'in-row': mySentences[this.index].review==1,'circle': mySentences[this.index].review==0}"> -->
+							<span >
+								{{j.id}}
+							</span>
+
+
+						<!-- </span> -->
+					</div>
+
+				</div>
+				<!-- <button routerLink="/rules" routerLinkActive="active" class="button login__submit1">
+					<span class="button__text" >Take Photo</span>
+
+				</button>
+				<button routerLink="/rules" routerLinkActive="active" class="button login__submit1">
+					<span class="button__text" >Retake Photo</span>
+
+				</button>
+				<button routerLink="/rules" routerLinkActive="active" class="button login__submit1" style="margin-left: 105px;">
+					<span class="button__text" >Submit</span>
+
+
+				</button> -->
+
+			</form>
+			<button (click)="review(this.questionnumber)" routerLinkActive="active" class="button login__submit" style="border: 1px solid #f44336;">
+				<span class="button__text" >Mark For Review</span>
+
+
+			</button>
+			<button (click)="confirm(this.questionnumber)" routerLink="/test" routerLinkActive="active" class="button login__submit" style="border: 1px solid #24a54f;">
+				<span class="button__text" >Confirm</span>
+
+
+			</button>
+            <button routerLink="/test" routerLinkActive="active" class="button login__submit" style="border: 1px solid #3659f4;">
+				<span class="button__text" >Next</span>
+
+
+			</button>
+            <button  routerLinkActive="active" class="login__submit1" (click)="openDialogWithRef(firstDialog)">
+				<span class="button__text" >Submit Test</span>
+
+
+			</button>
+
+		</div>
+
+	</div>
 </div>
+<ng-template #firstDialog>
+	<div >
+		<h2 matDialogTitle>Message</h2>
+	<p matDialogContent><em style="font-weight: 800;">Submitted Successfully!!</em></p>
+	<mat-dialog-actions align="end">
+	  <button mat-button matDialogClose class="login__submit2">OK</button>
+	</mat-dialog-actions>
+	</div>
+
+  </ng-template>
