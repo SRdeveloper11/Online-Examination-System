@@ -3,6 +3,7 @@ package com.java.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,4 +67,17 @@ public class StudentController {
     public List<Student> getAllStudent() {
         return studentService.getAllStudents();
     }
+    
+    //Student Login
+    @PostMapping("/token")
+    public ResponseEntity<?> loginStudent(@RequestBody Student student) {
+    	return studentService.loginStudent(student);
+    }
+    
+    //Password Update
+    @PutMapping("/update")
+    public Student updateStudents(@RequestBody Student student) {
+    	return studentService.updateStudents(student);
+    }
+   
 }
