@@ -107,8 +107,9 @@
 					</li>
 				</ol>
 			</div>
+			<!-- {{questionList.length}} -->
 			<div class="d-flex justify-content-between">
-				<button disabled="currentQuestion++ = Question.length" (click) = "nextQuestion()"  class="button login__submit" style="border: 1px solid #3659f4;">
+				<button [disabled]="+currentQuestion == (questionList.length - 1)" (click) = "nextQuestion()" routerLinkActive="active" class="button login__submit" style="border: 1px solid #3659f4;">
 					<span class="button__text">Next</span>
 				</button>
 			</div>
