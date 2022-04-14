@@ -31,7 +31,7 @@ export class TestPageComponent implements OnInit {
     this.questionnumber = this.mySentences[0].id;
     this.displayquestion = this.mySentences[0].text;
     this.displayanswer = this.mySentences[0].answers;
-    this.allotedtime = (this.time * 60);
+    this.allotedtime = (this.time * 30);
   }
 
   ngOnInit() {
