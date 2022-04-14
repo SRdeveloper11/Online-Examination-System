@@ -33,6 +33,9 @@ export class TestPageComponent implements OnInit {
   public questionList: Question[] = [];
   public currentQuestion:number = 0;
   public points:number = 0;
+  public correctAnswer:number = 0;
+  public inCorrectAnswer:number = 0;
+  isQuizCompleted:boolean = false;
   constructor(private questionService: QuestionService) {
     // this.questionsmodel = TestQuestions;
     // this.questionnumber = this.mySentences[0].id;
@@ -117,6 +120,24 @@ export class TestPageComponent implements OnInit {
 
   nextQuestion(){
     this.currentQuestion++;
+  }
+
+  ans(currentQno:number, option:any){
+    if(currentQno === this.questionList.length){
+        this.isQuizCompleted = true;
+    }
+    if(option == this.questionList[this.currentQuestion].answer){
+      this.points+= 10;
+      this.correctAnswer++;
+      this.currentQuestion++;
+      console.log(this.points);
+
+    }else{
+      this.inCorrectAnswer++;
+      this.currentQuestion++;
+      console.log(this.points);
+    }
+
   }
 
 }
