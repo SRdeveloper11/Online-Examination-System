@@ -305,9 +305,11 @@ body {
 }
 
 .card{
-	max-width: 800px;
-	margin: 0 auto;
+	width: 500px;
+	/* margin: 0 auto; */
 	padding: 10px;
+	margin-left:20px ;
+	background: linear-gradient(90deg, #eeeef0, #f1f1f5);
 }
 
 li{
