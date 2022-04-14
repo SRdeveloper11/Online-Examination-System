@@ -8,9 +8,9 @@
   <a mat-icon-button *ngIf="loggedIn">User</a>
   <a *ngIf = "loggedIn" (click)="logoutUser()" mat-icon-button>Logout</a> -->
   <!-- <a href="/" mat-icon-button>Home</a> -->
-  <a *ngIf="loggedIn && (this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/rules-module">Rules</a>
-  <a *ngIf="loggedIn && (this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button  routerLink = "/student-module">Student </a>
-  <a *ngIf="loggedIn && (this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/question-module">Question</a>
-  <a *ngIf="loggedIn && (this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/result">Result</a>
+  <a *ngIf="loggedIn && (this.router.url!='/login' && this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/rules-module">Rules</a>
+  <a *ngIf="loggedIn && (this.router.url!='/login' && this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button  routerLink = "/student-module">Student </a>
+  <a *ngIf="loggedIn && (this.router.url!='/login' && this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/question-module">Question</a>
+  <a *ngIf="loggedIn && (this.router.url!='/login' && this.router.url!='/dashboard' && this.router.url!='/test' && this.router.url!='/rule-page')"  mat-icon-button routerLink = "/result">Result</a>
   <a *ngIf="loggedIn" (click)="logoutUser()" mat-icon-button>Logout</a>
 </mat-toolbar>
