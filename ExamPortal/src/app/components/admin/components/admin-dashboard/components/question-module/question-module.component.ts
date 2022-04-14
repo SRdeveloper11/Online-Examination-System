@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms'
+import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms'
 import { Question } from 'src/app/components/admin/components/admin-dashboard/model/question';
 import { QuestionService } from 'src/app/components/admin/components/admin-dashboard/services/question.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -23,14 +23,14 @@ export class QuestionModuleComponent implements OnInit {
 
     this.queDetail = this.formBuilder.group({
       questionID: [''],
-      question: [''],
-      option1: [''],
-      option2: [''],
-      option3: [''],
-      option4: [''],
-      answer: [''],
-      marks: [''],
-      subject: ['']
+      question: ['',Validators.required],
+      option1: ['',Validators.required],
+      option2: ['',Validators.required],
+      option3: ['',Validators.required],
+      option4: ['',Validators.required],
+      answer: ['',Validators.required],
+      marks: ['',Validators.required],
+      subject: ['',Validators.required]
 
     });
 
