@@ -59,48 +59,86 @@
           <h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
 
           <form [formGroup]="queDetail">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Question ID </label>
-              <input type="text" formControlName="questionID" class="form-control" id="id" aria-describedby="emailHelp">
-            </div>
+
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Question </label>
               <input type="text" formControlName="question" class="form-control" id="name" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['question'].touched && !queDetail.controls['question'].valid">
+                <span *ngIf="queDetail.controls['question'].hasError('required') ">
+                  *Question is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 1 </label>
               <input type="text" formControlName="option1" class="form-control" id="option1" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option1'].touched && !queDetail.controls['option1'].valid">
+                <span *ngIf="queDetail.controls['option1'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 2 </label>
               <input type="text" formControlName="option2" class="form-control" id="option2" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option2'].touched && !queDetail.controls['option2'].valid">
+                <span *ngIf="queDetail.controls['option2'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 3 </label>
               <input type="text" formControlName="option3" class="form-control" id="option3" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option3'].touched && !queDetail.controls['option3'].valid">
+                <span *ngIf="queDetail.controls['option3'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 4 </label>
               <input type="text" formControlName="option4" class="form-control" id="option4" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option4'].touched && !queDetail.controls['option4'].valid">
+                <span *ngIf="queDetail.controls['option4'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Answer </label>
               <input type="text" formControlName="answer" class="form-control" id="answer" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['answer'].touched && !queDetail.controls['answer'].valid">
+                <span *ngIf="queDetail.controls['answer'].hasError('required') ">
+                  *Answer is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Marks </label>
               <input type="text" formControlName="marks" class="form-control" id="marks" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['marks'].touched && !queDetail.controls['marks'].valid">
+                <span *ngIf="queDetail.controls['marks'].hasError('required') ">
+                  *Mark is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Subject </label>
               <input type="text" formControlName="subject" class="form-control" id="subject" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['subject'].touched && !queDetail.controls['subject'].valid">
+                <span *ngIf="queDetail.controls['subject'].hasError('required') ">
+                  *Subject is Required
+                </span>
+              </small>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuestion()">Add Question</button>
+              <button type="button" [disabled]="!queDetail.valid" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuestion()">Add Question</button>
             </div>
           </form>
 
@@ -122,45 +160,83 @@
         <div class="modal-body">
 
           <form [formGroup]="queDetail">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Question ID </label>
-              <input type="text" formControlName="questionID" class="form-control" id="id" aria-describedby="emailHelp">
-            </div>
+
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Question </label>
               <input type="text" formControlName="question" class="form-control" id="name" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['question'].touched && !queDetail.controls['question'].valid">
+                <span *ngIf="queDetail.controls['question'].hasError('required') ">
+                  *Question is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 1 </label>
               <input type="text" formControlName="option1" class="form-control" id="option1" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option1'].touched && !queDetail.controls['option1'].valid">
+                <span *ngIf="queDetail.controls['option1'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 2 </label>
               <input type="text" formControlName="option2" class="form-control" id="option2" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option2'].touched && !queDetail.controls['option2'].valid">
+                <span *ngIf="queDetail.controls['option2'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 3 </label>
               <input type="text" formControlName="option3" class="form-control" id="option3" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option3'].touched && !queDetail.controls['option3'].valid">
+                <span *ngIf="queDetail.controls['option3'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Option 4 </label>
               <input type="text" formControlName="option4" class="form-control" id="option4" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['option4'].touched && !queDetail.controls['option4'].valid">
+                <span *ngIf="queDetail.controls['option4'].hasError('required') ">
+                  *Option is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Answer </label>
               <input type="text" formControlName="answer" class="form-control" id="answer" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['answer'].touched && !queDetail.controls['answer'].valid">
+                <span *ngIf="queDetail.controls['answer'].hasError('required') ">
+                  *Answer is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Marks </label>
               <input type="text" formControlName="marks" class="form-control" id="marks" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['marks'].touched && !queDetail.controls['marks'].valid">
+                <span *ngIf="queDetail.controls['marks'].hasError('required') ">
+                  *Marks is Required
+                </span>
+              </small>
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Subject </label>
               <input type="text" formControlName="subject" class="form-control" id="subject" aria-describedby="emailHelp">
+              <small  class="text-danger"*ngIf="queDetail.controls['subject'].touched && !queDetail.controls['subject'].valid">
+                <span *ngIf="queDetail.controls['subject'].hasError('required') ">
+                  *Subject is Required
+                </span>
+              </small>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline-success" (click)="updateQuestion()" data-bs-dismiss="modal">Update </button>
+              <button type="button" [disabled]="!queDetail.valid" class="btn btn-outline-success" (click)="updateQuestion()" data-bs-dismiss="modal">Update </button>
+
             </div>
           </form>
 

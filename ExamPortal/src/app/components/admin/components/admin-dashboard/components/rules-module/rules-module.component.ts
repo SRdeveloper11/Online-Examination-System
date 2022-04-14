@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
 import { Rule } from 'src/app/components/admin/components/admin-dashboard/model/rule';
 import { RuleService } from 'src/app/components/admin/components/admin-dashboard/services/rule.service';
 
@@ -22,7 +22,7 @@ export class RulesModuleComponent implements OnInit {
 
     this.ruleDetail = this.formBuilder.group({
       id: [''],
-      name: ['']
+      name: ['',Validators.required]
     });
 
   }
