@@ -72,7 +72,7 @@ const routes: Routes = [
       path : "rules-module",
       component : RulesModuleComponent,
       pathMatch : 'full',
-    //   canActivate : [AdminAuthGuard]
+      canActivate : [AdminAuthGuard]
   },
   {
       path : "result",
@@ -96,7 +96,7 @@ const routes: Routes = [
       path : "test",
       component : TestPageComponent,
       pathMatch : 'full',
-      canActivate : [AuthGuard]
+    //   canActivate : [AuthGuard]
   }
 
 ];
