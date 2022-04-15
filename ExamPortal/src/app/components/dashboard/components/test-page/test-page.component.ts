@@ -20,7 +20,7 @@ export class TestPageComponent implements OnInit {
   interval: any;
   // displayanswer: any;
    allotedtime: any;
-   time: any = 60;
+   time: any = 1;
   // objectKeys = Object.keys;
   // public mySentences: Array<any> = [
   //   { id: 1, text: 'what is AngularTutorial?', review: -1, answers: [{ id: 1, value: 'answer a',isselected:false},{ id: 2, value: 'answer a',isselected:false},{ id: 3, value: 'answer a',isselected:false},{ id: 4, value: 'answer a',isselected:false}] },
@@ -36,7 +36,7 @@ export class TestPageComponent implements OnInit {
   public correctAnswer:number = 0;
   public inCorrectAnswer:number = 0;
   isQuizCompleted:boolean = false;
-  constructor(private questionService: QuestionService) {
+  constructor(private questionService: QuestionService,private dialog: MatDialog) {
     // this.questionsmodel = TestQuestions;
     // this.questionnumber = this.mySentences[0].id;
     // this.displayquestion = this.mySentences[0].text;
@@ -62,9 +62,9 @@ export class TestPageComponent implements OnInit {
     }, 1000)
     this.getQuestions();
   }
-  // openDialogWithRef(ref: TemplateRef<any>) {
-  //   this.dialog.open(ref)
-  // }
+  openDialogWithRef(ref: TemplateRef<any>) {
+    this.dialog.open(ref)
+  }
   // openquestion(id: any) {
   //
   //   console.log(this.mySentences[id].text)
@@ -93,9 +93,10 @@ export class TestPageComponent implements OnInit {
   // }
    handleEvent(event: any, ref: TemplateRef<any>) {
      if (event.action == 'done') {
-       //this.openDialogWithRef(ref);
+       this.openDialogWithRef(ref);
      }
    }
+ 
   // isAllSelected(item:any) {
   //   this.displayanswer.forEach((val: { id: any; isselected: boolean; }) => {
   //     if (val.id == item.id) val.isselected = !val.isselected;
@@ -138,6 +139,9 @@ export class TestPageComponent implements OnInit {
       console.log(this.points);
     }
 
+  }
+  ok(){
+    this.isQuizCompleted=true
   }
 
 }
