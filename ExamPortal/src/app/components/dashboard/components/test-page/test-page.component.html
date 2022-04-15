@@ -2,14 +2,7 @@
 <div class="container1">
 	<div class="screen">
 		<div class="screen__content">
-			<span style="text-align: center;display: inline;">
-				<h1> TEST</h1>
-			</span>
-			<span style="float: right;display: inline;">
-				<h1> Timer: <b>
-						<countdown [config]="{leftTime: allotedtime}" (event)="handleEvent($event,firstDialog)"></countdown>
-					</b></h1>
-			</span>
+			
 			<!-- <form class="login">
 
                 <div class="login__field">
@@ -78,6 +71,14 @@
 
 			</button> -->
 			<ng-container *ngIf = "!isQuizCompleted">
+				<span style="text-align: center;display: inline;">
+					<h1> TEST</h1>
+				</span>
+				<span style="float: right;display: inline;">
+					<h1> Timer: <b>
+							<countdown [config]="{leftTime: allotedtime}" (event)="handleEvent($event,firstDialog)"></countdown>
+						</b></h1>
+				</span>
 				<div class="question">
 					<div class="card">
 						<h3>{{questionList[currentQuestion]?.question}}</h3>
@@ -122,13 +123,49 @@
 			</ng-container>
 
 			<ng-container *ngIf = "isQuizCompleted">
-						<div class="d-flex justify-content-between text-center">
+						<!-- <div class="d-flex justify-content-between text-center">
                  <h3>Congratulations!!!<br> You have completed the test. <br> Below is your result: </h3>
 								 <p>Total Questions Attempted : {{questionList.length}} </p>
 								 <p>Total Correct Answerd : {{correctAnswer}} </p>
 								 <p>Total Wrong Answer : {{inCorrectAnswer}} </p>
 								 <p>Your Score : {{points}} Marks </p>
-						</div>
+						</div> -->
+						<span style="text-align: center;display: inline;">
+							<h1> Result</h1>
+							<br>
+							<h3><i>Congratulations!!!</i><br> <i>You have completed the test.</i> <br> <i>Below is your result:</i> </h3>
+						</span>
+				<!-- <div class="login__field">
+                    
+					
+					<label>Total Questions:&nbsp;</label>
+					<input type="text" class="login__input1" value="{{questionList.length}}">
+				</div> -->
+				<div class="login__field">
+					
+					<label>No. of question attempted:&nbsp;</label>
+					<input type="text" class="login__input1" value="{{questionList.length}}">
+				</div>
+				<div class="login__field">
+					
+					<label>No of correct Answer:&nbsp;</label>
+					<input type="text" class="login__input1" value="{{correctAnswer}}">
+				</div>
+				<div class="login__field">
+					
+					<label>No of Incorrect Answer:&nbsp;</label>
+					<input type="text" class="login__input1" value="{{inCorrectAnswer}}">
+				</div>
+				<div class="login__field">
+					
+					<label>Total Marks obtained:&nbsp;</label>
+					<input type="text" class="login__input1" value="{{points}}">
+				</div>
+				
+				<button routerLink="/home" routerLinkActive="active" class="button login__submit4">
+					<span class="button__text" >Exit</span>
+					
+				</button>				
 			</ng-container>
 
 		</div>
