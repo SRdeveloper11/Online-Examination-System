@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import * as moment1 from 'moment';
 import { Question } from 'src/app/components/admin/components/admin-dashboard/model/question';
 import { QuestionService } from 'src/app/components/admin/components/admin-dashboard/services/question.service';
+import { LoginService } from "src/app/services/login.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test-page',
@@ -20,7 +22,7 @@ export class TestPageComponent implements OnInit {
   interval: any;
   // displayanswer: any;
    allotedtime: any;
-   time: any = 1;
+   time: any = 60;
   // objectKeys = Object.keys;
   // public mySentences: Array<any> = [
   //   { id: 1, text: 'what is AngularTutorial?', review: -1, answers: [{ id: 1, value: 'answer a',isselected:false},{ id: 2, value: 'answer a',isselected:false},{ id: 3, value: 'answer a',isselected:false},{ id: 4, value: 'answer a',isselected:false}] },
@@ -36,12 +38,12 @@ export class TestPageComponent implements OnInit {
   public correctAnswer:number = 0;
   public inCorrectAnswer:number = 0;
   isQuizCompleted:boolean = false;
-  constructor(private questionService: QuestionService,private dialog: MatDialog) {
+  constructor(private questionService: QuestionService,private dialog: MatDialog,private loginService: LoginService,public router:Router) {
     // this.questionsmodel = TestQuestions;
     // this.questionnumber = this.mySentences[0].id;
     // this.displayquestion = this.mySentences[0].text;
     // this.displayanswer = this.mySentences[0].answers;
-    this.allotedtime = (this.time * 30);
+    this.allotedtime = (this.time * 1);
     this.getQueURL = 'http://localhost:8080/questions/get';
   }
 
@@ -96,7 +98,6 @@ export class TestPageComponent implements OnInit {
        this.openDialogWithRef(ref);
      }
    }
- 
   // isAllSelected(item:any) {
   //   this.displayanswer.forEach((val: { id: any; isselected: boolean; }) => {
   //     if (val.id == item.id) val.isselected = !val.isselected;
@@ -140,8 +141,15 @@ export class TestPageComponent implements OnInit {
     }
 
   }
+
   ok(){
     this.isQuizCompleted=true
+  }
+
+  logoutUser(){
+    this.loginService.logout();
+    location.reload();
+    window.location.href="/"
   }
 
 }

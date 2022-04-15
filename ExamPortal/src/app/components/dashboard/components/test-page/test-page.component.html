@@ -2,7 +2,7 @@
 <div class="container1">
 	<div class="screen">
 		<div class="screen__content">
-			
+
 			<!-- <form class="login">
 
                 <div class="login__field">
@@ -136,36 +136,36 @@
 							<h3><i>Congratulations!!!</i><br> <i>You have completed the test.</i> <br> <i>Below is your result:</i> </h3>
 						</span>
 				<!-- <div class="login__field">
-                    
-					
+
+
 					<label>Total Questions:&nbsp;</label>
 					<input type="text" class="login__input1" value="{{questionList.length}}">
 				</div> -->
 				<div class="login__field">
-					
+
 					<label>No. of question attempted:&nbsp;</label>
 					<input type="text" class="login__input1" value="{{questionList.length}}">
 				</div>
 				<div class="login__field">
-					
+
 					<label>No of correct Answer:&nbsp;</label>
 					<input type="text" class="login__input1" value="{{correctAnswer}}">
 				</div>
 				<div class="login__field">
-					
+
 					<label>No of Incorrect Answer:&nbsp;</label>
 					<input type="text" class="login__input1" value="{{inCorrectAnswer}}">
 				</div>
 				<div class="login__field">
-					
+
 					<label>Total Marks obtained:&nbsp;</label>
 					<input type="text" class="login__input1" value="{{points}}">
 				</div>
-				
-				<button routerLink="/home" routerLinkActive="active" class="button login__submit4">
+
+				<button routerLink="/home" routerLinkActive="active" class="button login__submit4" (click)="logoutUser()">
 					<span class="button__text" >Exit</span>
-					
-				</button>				
+
+				</button>
 			</ng-container>
 
 		</div>
