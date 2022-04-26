@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from "src/app/services/login.service";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
+  @ViewChild('username') nameKey!: ElementRef;
+
   constructor(private loginService: LoginService, private snack: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -24,30 +26,34 @@ export class LoginComponent implements OnInit {
 
       console.log("we have to submit the form");
       this.loginService.generateToken(this.credentials).subscribe(
-        (response:any)=>{
+        (response: any) => {
           console.log("response");
           this.loginService.loginUser(response.token);
-          window.location.href="/dashboard";
-          this.snack.open('Login Successful !!' , 'OK',{
+          window.location.href = "/dashboard";
+          this.snack.open('Login Successful !!', 'OK', {
             duration: 3000,
-            verticalPosition:'top',
+            verticalPosition: 'top',
           })
         },
-        (error:any)=>{
+        (error: any) => {
           console.log("error");
-          this.snack.open('Invalid Username or Password !!' , 'OK',{
+          this.snack.open('Invalid Username or Password !!', 'OK', {
             duration: 3000,
-            verticalPosition:'top',
+            verticalPosition: 'top',
           })
         }
       )
     } else {
       console.log("Fields are required!");
-      this.snack.open('Fields are required !!' , 'OK',{
+      this.snack.open('Fields are required !!', 'OK', {
         duration: 3000,
-        verticalPosition:'top',
+        verticalPosition: 'top',
       })
     }
+  }
+
+  login() {
+    localStorage.setItem('username',this.nameKey.nativeElement.value);
   }
 
 }

@@ -115,7 +115,7 @@
 					</button>
 
 					<button routerLinkActive="active" class="login__submit1" >
-						<span class="button__text">Submit Test</span>
+						<span class="button__text" (click)="submit(firstDialog)">Submit Test</span>
 					</button>
 
 				</div>
@@ -162,7 +162,7 @@
 					<input type="text" class="login__input1" value="{{points}}">
 				</div>
 
-				<button routerLink="/home" routerLinkActive="active" class="button login__submit4" (click)="logoutUser()">
+				<button routerLink="/home" routerLinkActive="active" class="button login__submit4" (click)="logoutUser()" (click)="addResult()">
 					<span class="button__text" >Exit</span>
 
 				</button>

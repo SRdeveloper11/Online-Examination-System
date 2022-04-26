@@ -5,6 +5,9 @@ import { Question } from 'src/app/components/admin/components/admin-dashboard/mo
 import { QuestionService } from 'src/app/components/admin/components/admin-dashboard/services/question.service';
 import { LoginService } from "src/app/services/login.service";
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms'
+import { Result } from 'src/app/components/admin/components/admin-dashboard/model/result';
+import { ResultService } from 'src/app/components/admin/components/admin-dashboard/services/result.service';
 
 @Component({
   selector: 'app-test-page',
@@ -12,6 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./test-page.component.css']
 })
 export class TestPageComponent implements OnInit {
+  public username1: string = "";
+  resDetail !: FormGroup;
+  resObj: Result = new Result();
+  resList: Result[] = [];
   currentTime: any;
   timer: any;
   // displayquestion: any;
@@ -21,8 +28,8 @@ export class TestPageComponent implements OnInit {
   timeLeft: number = 60;
   interval: any;
   // displayanswer: any;
-   allotedtime: any;
-   time: any = 60;
+  allotedtime: any;
+  time: any = 60;
   // objectKeys = Object.keys;
   // public mySentences: Array<any> = [
   //   { id: 1, text: 'what is AngularTutorial?', review: -1, answers: [{ id: 1, value: 'answer a',isselected:false},{ id: 2, value: 'answer a',isselected:false},{ id: 3, value: 'answer a',isselected:false},{ id: 4, value: 'answer a',isselected:false}] },
@@ -31,14 +38,14 @@ export class TestPageComponent implements OnInit {
   //   { id: 4, text: 'What is async call?', review: -1, answers: [{ id: 1, value: 'answer d',isselected:false},{ id: 2, value: 'answer d',isselected:false},{ id: 3, value: 'answer d',isselected:false},{ id: 4, value: 'answer d',isselected:false}] },
   // ];
 
-  getQueURL : string;
+  getQueURL: string;
   public questionList: Question[] = [];
-  public currentQuestion:number = 0;
-  public points:number = 0;
-  public correctAnswer:number = 0;
-  public inCorrectAnswer:number = 0;
-  isQuizCompleted:boolean = false;
-  constructor(private questionService: QuestionService,private dialog: MatDialog,private loginService: LoginService,public router:Router) {
+  public currentQuestion: number = 0;
+  public points: number = 0;
+  public correctAnswer: number = 0;
+  public inCorrectAnswer: number = 0;
+  isQuizCompleted: boolean = false;
+  constructor(private questionService: QuestionService, private dialog: MatDialog, private loginService: LoginService, public router: Router, private formBuilder: FormBuilder, private resService: ResultService) {
     // this.questionsmodel = TestQuestions;
     // this.questionnumber = this.mySentences[0].id;
     // this.displayquestion = this.mySentences[0].text;
@@ -49,6 +56,7 @@ export class TestPageComponent implements OnInit {
 
   ngOnInit() {
 
+    this.username1 = localStorage.getItem("username")!;
     this.currentTime = moment1().format('LTS');
     //widget  get updated after every 5000 millisecond
     this.timer = setInterval(() => {
@@ -63,6 +71,16 @@ export class TestPageComponent implements OnInit {
       }
     }, 1000)
     this.getQuestions();
+
+    this.resDetail = this.formBuilder.group({
+      id : [''],
+      username : this.username1,
+      questionAttempted : this.questionList.length,
+      correct : this.correctAnswer,
+      wrong : this.inCorrectAnswer,
+      totalMarks : this.points,
+
+    });
   }
   openDialogWithRef(ref: TemplateRef<any>) {
     this.dialog.open(ref)
@@ -93,11 +111,11 @@ export class TestPageComponent implements OnInit {
   //     }
   //   });
   // }
-   handleEvent(event: any, ref: TemplateRef<any>) {
-     if (event.action == 'done') {
-       this.openDialogWithRef(ref);
-     }
-   }
+  handleEvent(event: any, ref: TemplateRef<any>) {
+    if (event.action == 'done') {
+      this.openDialogWithRef(ref);
+    }
+  }
   // isAllSelected(item:any) {
   //   this.displayanswer.forEach((val: { id: any; isselected: boolean; }) => {
   //     if (val.id == item.id) val.isselected = !val.isselected;
@@ -111,30 +129,30 @@ export class TestPageComponent implements OnInit {
   //   clearInterval(this.timer)
   // }
 
-  getQuestions(){
+  getQuestions() {
     this.questionService.getAllQuestion()
-    .subscribe(res=>{
-      console.log(res);
+      .subscribe(res => {
+        console.log(res);
 
-      this.questionList = res;
-    })
+        this.questionList = res;
+      })
   }
 
-  nextQuestion(){
+  nextQuestion() {
     this.currentQuestion++;
   }
 
-  ans(currentQno:number, option:any){
-    if(currentQno === this.questionList.length){
-        this.isQuizCompleted = true;
+  ans(currentQno: number, option: any) {
+    if (currentQno === this.questionList.length) {
+      this.isQuizCompleted = true;
     }
-    if(option == this.questionList[this.currentQuestion].answer){
-      this.points+= 10;
+    if (option == this.questionList[this.currentQuestion].answer) {
+      this.points += 10;
       this.correctAnswer++;
       this.currentQuestion++;
       console.log(this.points);
 
-    }else{
+    } else {
       this.inCorrectAnswer++;
       this.currentQuestion++;
       console.log(this.points);
@@ -142,17 +160,45 @@ export class TestPageComponent implements OnInit {
 
   }
 
-  ok(){
-    this.isQuizCompleted=true
+  ok() {
+    this.isQuizCompleted = true
   }
 
-  logoutUser(){
+  logoutUser() {
     this.loginService.logout();
     location.reload();
-    window.location.href="/"
+    window.location.href = "/"
+  }
+  addResult() {
+    console.log(this.resDetail);
+    this.resObj.id = this.resDetail.value.id;
+    this.resObj.username = this.resDetail.value.username;
+    this.resObj.questionAttempted = this.questionList.length;
+    this.resObj.correct = this.correctAnswer;
+    this.resObj.wrong = this.inCorrectAnswer;
+    this.resObj.totalMarks = this.points;
+    this.resService.addResult(this.resObj).subscribe(res=>{
+        console.log(res);
+        this.getAllResults();
+    },err=>{
+        console.log(err);
+    });
+
+  }
+
+  getAllResults() {
+    this.resService.getAllResults().subscribe(res=>{
+        this.resList = res;
+    },err=>{
+      console.log("error while fetching data.")
+    });
+  }
+
+  submit(ref: TemplateRef<any>){
+      this.openDialogWithRef(ref);
   }
 
 }
 function moment() {
-   throw new Error('Function not implemented.');
+  throw new Error('Function not implemented.');
 }
